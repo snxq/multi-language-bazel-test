@@ -1,0 +1,13 @@
+# goland
+.idea/
+
+# vscode
+.vscode/
+
+# bazel out file
+bazel-bin
+bazel-genfiles
+bazel-multi-language-bazel-test
+bazel-out
+bazel-testlogs
+bazel-test
