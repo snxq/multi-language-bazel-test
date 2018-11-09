@@ -24,3 +24,18 @@ go_register_toolchains()
 # load gazelle
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 gazelle_dependencies()
+
+# load git_repository
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+# get rules_python
+git_repository(
+    name = "io_bazel_rules_python",
+    remote = "https://github.com/bazelbuild/rules_python.git",
+    commit = "23790d0e6acb4f16ab2b5158688e7feeb3e89eb6",
+)
+
+# Only needed for PIP support:
+# load("@io_bazel_rules_python//python:pip.bzl", "pip_repositories")
+
+# pip_repositories()
