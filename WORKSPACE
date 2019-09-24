@@ -30,29 +30,33 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 # get rules_python
 git_repository(
-    name = "io_bazel_rules_python",
+    name = "rules_python",
     remote = "https://github.com/bazelbuild/rules_python.git",
-    commit = "23790d0e6acb4f16ab2b5158688e7feeb3e89eb6",
+    # NOT VALID!  Replace this with a Git commit SHA.
+    commit = "54d1cb35cd54318d59bf38e52df3e628c07d4bbc",
 )
 
-# Only needed for PIP support:
-# load("@io_bazel_rules_python//python:pip.bzl", "pip_repositories")
+# This call should always be present.
+load("@rules_python//python:repositories.bzl", "py_repositories")
+py_repositories()
 
-# pip_repositories()
+# This one is only needed if you're using the packaging rules.
+load("@rules_python//python:pip.bzl", "pip_repositories")
+pip_repositories()
 
 
 # get rust rules
 http_archive(
     name = "io_bazel_rules_rust",
-    sha256 = "615639cfd5459fec4b8a5751112be808ab25ba647c4c1953d29bb554ef865da7",
-    strip_prefix = "rules_rust-0.0.6",
+    sha256 = "d6cd71c711ccbbaa5772818f2607a9da5f4c0d29f37cf69d3c0270143f047f58",
+    strip_prefix = "rules_rust-f727669b8ac3c9d237ed9bc7833b8e1eeec90506",
     urls = [
-        "http://bazel-mirror.storage.googleapis.com/github.com/bazelbuild/rules_rust/archive/0.0.6.tar.gz",
-        "https://github.com/bazelbuild/rules_rust/archive/0.0.6.tar.gz",
+        "https://github.com/bazelbuild/rules_rust/archive/f727669b8ac3c9d237ed9bc7833b8e1eeec90506.zip"
     ],
 )
 
-# load rust rules
 load("@io_bazel_rules_rust//rust:repositories.bzl", "rust_repositories")
-
 rust_repositories()
+
+load("@io_bazel_rules_rust//:workspace.bzl", "bazel_version")
+bazel_version(name = "bazel_version")
