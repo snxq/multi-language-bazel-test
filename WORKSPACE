@@ -5,15 +5,21 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # get rules_go
 http_archive(
     name = "io_bazel_rules_go",
-    urls = ["https://github.com/bazelbuild/rules_go/releases/download/0.19.4/rules_go-0.19.4.tar.gz"],
-    sha256 = "ae8c36ff6e565f674c7a3692d6a9ea1096e4c1ade497272c2108a810fb39acd2",
+    urls = [
+        "https://storage.googleapis.com/bazel-mirror/github.com/bazelbuild/rules_go/releases/download/v0.20.1/rules_go-v0.20.1.tar.gz",
+        "https://github.com/bazelbuild/rules_go/releases/download/v0.20.1/rules_go-v0.20.1.tar.gz",
+    ],
+    sha256 = "842ec0e6b4fbfdd3de6150b61af92901eeb73681fd4d185746644c338f51d4c0",
 )
 
 # get gazelle
 http_archive(
     name = "bazel_gazelle",
-    urls = ["https://github.com/bazelbuild/bazel-gazelle/releases/download/0.18.2/bazel-gazelle-0.18.2.tar.gz"],
-    sha256 = "7fc87f4170011201b1690326e8c16c5d802836e3a0d617d8f75c3af2b23180c4",
+    urls = [
+        "https://storage.googleapis.com/bazel-mirror/github.com/bazelbuild/bazel-gazelle/releases/download/v0.19.0/bazel-gazelle-v0.19.0.tar.gz",
+        "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.19.0/bazel-gazelle-v0.19.0.tar.gz",
+    ],
+    sha256 = "41bff2a0b32b02f20c227d234aa25ef3783998e5453f7eade929704dcff7cd4b",
 )
 
 # load go_rules
@@ -29,11 +35,10 @@ gazelle_dependencies()
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 # get rules_python
-git_repository(
+http_archive(
     name = "rules_python",
-    remote = "https://github.com/bazelbuild/rules_python.git",
-    # NOT VALID!  Replace this with a Git commit SHA.
-    commit = "54d1cb35cd54318d59bf38e52df3e628c07d4bbc",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.0.1/rules_python-0.0.1.tar.gz",
+    sha256 = "aa96a691d3a8177f3215b14b0edc9641787abaaa30363a080165d06ab65e1161",
 )
 
 # This call should always be present.
@@ -48,10 +53,11 @@ pip_repositories()
 # get rust rules
 http_archive(
     name = "io_bazel_rules_rust",
-    sha256 = "d6cd71c711ccbbaa5772818f2607a9da5f4c0d29f37cf69d3c0270143f047f58",
-    strip_prefix = "rules_rust-f727669b8ac3c9d237ed9bc7833b8e1eeec90506",
+    sha256 = "b6da34e057a31b8a85e343c732de4af92a762f804fc36b0baa6c001423a70ebc",
+    strip_prefix = "rules_rust-55f77017a7f5b08e525ebeab6e11d8896a4499d2",
     urls = [
-        "https://github.com/bazelbuild/rules_rust/archive/f727669b8ac3c9d237ed9bc7833b8e1eeec90506.zip"
+        # Master branch as of 2019-10-07
+        "https://github.com/bazelbuild/rules_rust/archive/55f77017a7f5b08e525ebeab6e11d8896a4499d2.tar.gz",
     ],
 )
 
