@@ -1,6 +1,6 @@
 # multi-language-bazel-test
 
-[![Build status](https://badge.buildkite.com/0bcfe58b6f5741aacb09b12485969ba7a1205955a45b53e854.svg)](https://buildkite.com/bazelfuns/multi-language-bazel-test)
+[![Build status](https://badge.buildkite.com/41e4fa36688578ca60921a9d901d7c7e84d06cb4dfb9658171.svg)](https://buildkite.com/bazelfuns/multi-language-bazel-test)
 
 该项目是bazel多语言仓库编译的实践。
 
